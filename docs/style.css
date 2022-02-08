@@ -1,0 +1,90 @@
+/* Include the padding and border in an element's total width and height */
+* {
+  box-sizing: border-box;
+}
+
+/* Remove margins and padding from the list */
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+}
+
+/* Set all odd list items to a different color*/
+ul li:nth-child(odd) {
+  background: #C3E0E5;
+}
+
+/* Darker background-color on hover */
+ul li:hover {
+  background: #72b2bd;
+}
+
+/* When clicked on, add a background color and strike out text */
+ul li.complete {
+  display: none;
+  background: #008197;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+.myUL {
+    display: grid;
+
+}
+/* Style the header */
+.header {
+  background-color: #41729F;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+/* Style the input */
+.input {
+    display: flex;
+    flex-direction: row;
+    row-gap: 10px;
+
+}
+
+.option {
+    position: bottom;
+}
+#myInput {
+  margin: 8px 0;
+  border: none;
+  border-radius: 0;
+  width: 80%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  float: left;
+  font-size: 16px;
+}
+
+/* Style the "Add" button */
+#addBtn {
+  background-color: #6ba6dd;
+  color: white;
+  border: none;
+  text-align: center;
+  width: 20%;
+  display: inline-block;
+  font-size: 16px;
+  padding: 12px;
+  transition-duration: 0.5s;
+  
+}
+
+#addBtn:hover {
+    background-color: #5885AF;
+  }
