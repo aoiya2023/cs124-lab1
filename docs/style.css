@@ -37,10 +37,6 @@ ul li.complete {
   text-decoration: line-through;
 }
 
-.myUL {
-    display: grid;
-
-}
 /* Style the header */
 .header {
   background-color: #41729F;
@@ -57,9 +53,6 @@ ul li.complete {
 
 }
 
-.option {
-    position: bottom;
-}
 #myInput {
   margin: 8px 0;
   border: none;
@@ -84,7 +77,45 @@ ul li.complete {
   transition-duration: 0.5s;
   
 }
-
 #addBtn:hover {
+  background-color: #5885AF;
+}
+
+/* Position the "Hide" "Delete" button */
+.option {
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    justify-content: space-around;
+    align-content: stretch;
+    flex: 0 0 100%;
+}
+
+/* Style the "Hide" button */
+#hideBtn {
+  background-color: #0878e0;
+  color: white;
+  border: none;
+  text-align: center;
+  font-size: 20px;
+  padding: 12px;
+  transition-duration: 0.5s;
+}
+#hideBtn:hover {
     background-color: #5885AF;
-  }
+}
+
+/* Style the "Delete" button */
+#dltBtn {
+  background-color: #001c36;
+  color: white;
+  border: none;
+  text-align: center;
+  font-size: 20px;
+  padding: 12px;
+  transition-duration: 0.5s;
+
+}
+#dltBtn:hover {
+    background-color: #5885AF;
+}
