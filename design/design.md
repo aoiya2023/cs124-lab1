@@ -39,8 +39,26 @@
      mark a task complete by putting a line across.
 
 ## Alternative Designs
-
+   - TODO: change color and take screenshot (orange, green)
+   - We had three options for our color scheme: orange, green, and blue. orange was our warm color
+     option and the two others were our cool color option. Warm color is more likely to motivate the
+     users to complete the tasks (some of the todo apps we have used in the past used warm color), 
+     while cool colors is more likely to make the users feel relaxed and not stress about the tasks. 
+     After comparing the three colors, we decided to move on with the cool colors and after more
+     discussion, we chose blue since it looked better in terms of aesthetics. 
+   - 
 ## Challenges
    - The biggest challenge we had was making the "Hide" button and "Delete" button stick to the
-     end of page. We were running into troubles when 
+     end of page. We were running into troubles where buttons would not be sized right (even when 
+     set the width & height), moving as the list grows, or overlapping with the list.
+     We now do have the buttons at the bottom even if items are added or deleted. We still do want
+     to modify in future versions, because it sometimes does not work (since position of everything 
+     else is relative while the buttons are absolute, they behave weirdly when they overlap).
+   - It was challenging for us to choose a color. Since it is a todo list, we want to encourage the 
+     users to finish the tasks but also not stress them. We tried different colors, both warm and 
+     cool colors, and in the end decided that we want to focus on not making the users stressed (if 
+     they are putting it in a todo list, it is more likely that they are already motivated to do the
+     tasks.)
 ## Good Design
+   - We think the design for adding tasks is clean and simple. 
+   
