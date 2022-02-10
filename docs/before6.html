@@ -3,34 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>ToDo List</title>
-    <link rel="stylesheet" href="../../temp/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="list">
-    <div class="header">
-        <h2> To Do List</h2>
-    </div>
-    <div class="input">
-        <input type="text" id="myInput" placeholder="todo...">
-        <button type="button" id="addBtn">Add</button>
-    </div>
+    <div class="list">
+        <div class="header">
+            <h2> To Do List</h2>
+        </div>
+        <div class="input">
+            <input type="text" id="myInput" placeholder="todo...">
+            <button type="button" id="addBtn">Add</button>
+        </div>
+        
+        <ul id="myUL">
+            <li class="complete">Call Mom</li>
+            <li>Feed the duck</li>
+            <li>Buy flower</li>
+            <li class="complete">Go to the mall</li>
+            <li class="complete">Build puzzle</li>
+        </ul>
 
-    <ul id="myUL">
-        <li class="first">
-            <input type = "checkbox">
-            <input type = "text"> <br/>
-        </li>
-        <li class="complete">go on a walk</li>
-        <li> feed the duck</li>
-        <li> buy flower</li>
-    </ul>
-
-    <div class="option">
-        <button type="button" id="hideBtn">Hide</button>
-        <button type="button" id="dltBtn">Delete</button>
+        <div class="option">
+            <button type="button" id="hideBtn">Hide</button>
+            <button type="button" id="dltBtn">Delete</button>
+        </div>
+        
     </div>
-
-</div>
 
 </body>
 </html>
