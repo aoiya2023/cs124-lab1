@@ -39,14 +39,12 @@
      mark a task complete by putting a line across.
 
 ## Alternative Designs
-   - TODO: change color and take screenshot (orange, green)
-   - We had three options for our color scheme: orange, green, and blue. orange was our warm color
-     option and the two others were our cool color option. Warm color is more likely to motivate the
+   - We had three options for our color scheme: orange and blue. orange was our warm color
+     option and blue was our cool color option. Warm color is more likely to motivate the
      users to complete the tasks (some of the todo apps we have used in the past used warm color), 
      while cool colors is more likely to make the users feel relaxed and not stress about the tasks. 
-     After comparing the three colors, we decided to move on with the cool colors and after more
-     discussion, we chose blue since it looked better in terms of aesthetics. 
-   - 
+     After comparing the two colors, we decided to move on with the cool color.  
+     <img src="alternative.png" alt="drawing" width="200"/>
 ## Challenges
    - The biggest challenge we had was making the "Hide" button and "Delete" button stick to the
      end of page. We were running into troubles where buttons would not be sized right (even when 

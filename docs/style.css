@@ -21,24 +21,24 @@ ul li {
 
 /* Set all odd list items to a different color*/
 ul li:nth-child(odd) {
-  background: #ADCBCE; /*#C3E0E5*/
+  background: #F2C683; /*#ADCBCE; #C3E0E5*/
 }
 
 /* Darker background-color on hover */
 ul li:hover {
-  background: #86BBBD; /*#72b2bd*/
+  background: #F28F44; /*#86BBBD; #72b2bd*/
 }
 
 /* When clicked on, add a background color and strike out text */
 ul li.complete {
-  background: #6A6B83; /*#008197*/
+  background: #836a6a; /* #6A6B83; #008197*/
   color: #fff;
   text-decoration: line-through;
 }
 
 /* Style the header */
 .header {
-  background-color: #41729F; /*blue #6A6B83*/
+  background-color: #C43F3F; /*#41729F; blue #6A6B83*/
   padding: 60px 80px;
   color: white;
   text-align: center;
@@ -67,7 +67,7 @@ ul li.complete {
 
 /* Style the "Add" button */
 #addBtn {
-  background-color: #6ba6dd; /**/
+  background-color: #F0A202; /*#6ba6dd; */
   color: white;
   border: none;
   text-align: center;
@@ -79,7 +79,7 @@ ul li.complete {
   
 }
 #addBtn:hover {
-  background-color: #5885AF; /**/
+  background-color: #F28F44; /*#5885AF; */
 }
 
 /* Position the "Hide" "Delete" button */
@@ -93,7 +93,7 @@ ul li.complete {
 
 /* Style the "Hide" button */
 #hideBtn {
-  background-color: #0878e0; /* blue #6A6B83*/
+  background-color: #94610A; /*#0878e0; blue #6A6B83*/
   color: white;
   border: none;
   text-align: center;
@@ -104,12 +104,12 @@ ul li.complete {
 
 }
 #hideBtn:hover {
-    background-color: #5885AF; /**/
+    background-color: #F28F44; /*#5885AF; */
 }
 
 /* Style the "Delete" button */
 #dltBtn {
-  background-color: #001c36;
+  background-color: #521720; /*#001c36;*/
   color: white;
   border: none;
   text-align: center;
@@ -120,7 +120,7 @@ ul li.complete {
 
 }
 #dltBtn:hover {
-    background-color: #5885AF; /**/
+    background-color: #F28F44; /*#5885AF; */
 }
 
 #typing {
