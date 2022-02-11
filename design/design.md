@@ -60,5 +60,10 @@
      they are putting it in a todo list, it is more likely that they are already motivated to do the
      tasks.)
 ## Good Design
-   - We think the design for adding tasks is clean and simple. 
+   - We think our design for adding tasks is clean and simple. For some existing todo apps, users 
+     need to scroll down to the bottom of list to add a task. Instead of following that convention,
+     we decided to create a text box at the top where users can add tasks. This way, steps for adding 
+     a task is always consistent for users (no need to scroll different length depending on how long the
+     existing list is): just type in the text box and hit add (new task automatically placed ath the end
+     of list). 
    
