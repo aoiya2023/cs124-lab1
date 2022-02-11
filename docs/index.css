@@ -1,5 +1,6 @@
 .task {
-    display: grid;
+    display: flex;
+    gap: 30px;
 }
 
 .image {
