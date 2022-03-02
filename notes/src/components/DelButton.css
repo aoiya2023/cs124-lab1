@@ -1,0 +1,18 @@
+/* Style the "Delete" button */
+.dltBtn {
+    background-color: #001c36;
+    color: white;
+    border: none;
+    text-align: center;
+    font-size: 20px;
+    padding: 30px 40px;
+    transition-duration: 0.5s;
+    width: 50%;
+
+    position: absolute;
+    /*bottom: 0;*/
+    flex-direction: row;
+}
+.dltBtn:hover {
+    background-color: #5885AF; /**/
+}

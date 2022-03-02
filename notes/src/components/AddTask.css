@@ -1,0 +1,33 @@
+/* Style the "Add" button */
+.addBtn {
+    background-color: #6ba6dd; /**/
+    color: white;
+    border: none;
+    text-align: center;
+    width: 20%;
+    display: inline-block;
+    padding: 12px;
+    transition-duration: 0.5s;
+}
+.addBtn:hover {
+    background-color: #5885AF; /**/
+}
+
+/* Style the input */
+.form {
+    display: flex;
+    flex-direction: row;
+    row-gap: 10px;
+}
+
+/* Style the input text box (to add todo)*/
+.input {
+    margin: 8px 0;
+    border: none;
+    border-radius: 0;
+    width: 80%;
+    padding: 20px 60px;
+    box-sizing: border-box;
+    float: left;
+    font-size: 20px;
+}
