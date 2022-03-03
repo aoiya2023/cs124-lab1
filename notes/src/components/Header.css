@@ -1,6 +1,7 @@
 .header {
   background-color: #41729F; /*blue #6A6B83*/
-  padding: 20px;
+  padding: 60px .25px;
   color: white;
   text-align: center;
+  width: 100%;
 }

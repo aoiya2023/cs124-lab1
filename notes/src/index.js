@@ -4,10 +4,29 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-
+const initialData = [
+  {
+      id: 1,
+      text: 'Call Mom',
+      complete: false,
+      hidden: false
+  },
+  {
+      id: 2,
+      text: 'Feed duck',
+      complete: true,
+      hidden: false
+  },
+  {
+      id: 3,
+      text: 'Buy flower',
+      complete: false,
+      hidden: false
+  }
+]
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App initialData={initialData}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

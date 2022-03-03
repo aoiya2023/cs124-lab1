@@ -6,8 +6,8 @@
     text-align: center;
     width: 20%;
     display: inline-block;
-    padding: 12px;
     transition-duration: 0.5s;
+    
 }
 .addBtn:hover {
     background-color: #5885AF; /**/
@@ -17,7 +17,7 @@
 .form {
     display: flex;
     flex-direction: row;
-    row-gap: 10px;
+    
 }
 
 /* Style the input text box (to add todo)*/
@@ -25,7 +25,7 @@
     margin: 8px 0;
     border: none;
     border-radius: 0;
-    width: 80%;
+    width: 100%;
     padding: 20px 60px;
     box-sizing: border-box;
     float: left;

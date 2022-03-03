@@ -11,7 +11,7 @@
 
     position: absolute;
     bottom: 0;
-    flex-direction: row;
+    left: 0;
 }
 .hideBtn:hover {
     background-color: #5885AF; /**/

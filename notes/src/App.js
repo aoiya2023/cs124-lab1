@@ -6,26 +6,10 @@ import {Tasks} from './components/Tasks.js'
 import {HideButton} from './components/HideButton.js'
 import {DelButton} from './components/DelButton.js'
 
-const initialData = [
-    {
-        id: 1,
-        text: 'Call Mom',
-        complete: false
-    },
-    {
-        id: 2,
-        text: 'Feed duck',
-        complete: true
-    },
-    {
-        id: 3,
-        text: 'Buy flower',
-        complete: false
-    }
-]
 
-function App() {
-    const [tasks, setTasks] = useState(initialData)
+
+function App(props) {
+    const [tasks, setTasks] = useState(props.initialData)
     const [showComplete, setShowComplete] = useState(false)
 
     // Delete task
@@ -36,17 +20,25 @@ function App() {
     // Add task
     function addTask (e) {
         const complete = false
-        const id = tasks.length + 1
+        const hidden = false
+        const id = Math.floor(Math.random() * 10000) + 1
         const newTask = {id,...e,complete}
         setTasks([...tasks, newTask])
     }
 
     // Hide Task
     function hideTask () {
-        return console.log('hide')
+        setTasks(tasks.map((task) => task.complete
+            ? {...task, hidden: !task.hidden} : task))
+        setShowComplete(!showComplete)
     }
 
     // Rename Task
+    function renameTask (id, value) {
+        setTasks(tasks.map (
+            task => task.id === id ? {...task, text: value} : task))
+   
+    }
 
     // Completed Task
     function completedTask (id) {
@@ -59,8 +51,9 @@ function App() {
       <Header title='TO DO LIST'/>
       <AddTask text='Add' addTask={addTask}/>
       <Tasks tasks={tasks} className='lsItems'
-      completedTask={completedTask}/>
-      <HideButton text='Hide' hideTask={hideTask}/>
+      completedTask={completedTask}
+      renameTask={renameTask}/>
+      <HideButton text={showComplete ? "Unhide" : "Hide"} hideTask={hideTask}/>
       <DelButton text='Delete' deleteTask={deleteTask}/>
     </div>
   );
