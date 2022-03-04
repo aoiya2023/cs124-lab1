@@ -41,12 +41,12 @@
      mark a task complete by putting a line across.
 
 ## Alternative Designs
-   - We had three options for our color scheme: orange and blue. orange was our warm color
-     option and blue was our cool color option. Warm color is more likely to motivate the
+   - We had three options for our color scheme: orange and blue. orange was our warm color.
+     opt ion and blue was our cool color option. Warm color is more likely to motivate the
      users to complete the tasks (some of the todo apps we have used in the past used warm color), 
      while cool colors is more likely to make the users feel relaxed and not stress about the tasks. 
      After comparing the two colors, we decided to move on with the cool color.  
-     <img src="alternative.png" alt="drawing" width="200"/>
+    
 ## Challenges
    - The biggest challenge we had was making the "Hide" button and "Delete" button stick to the
      end of page. We were running into troubles where buttons would not be sized right (even when 
@@ -59,6 +59,7 @@
      cool colors, and in the end decided that we want to focus on not making the users stressed (if 
      they are putting it in a todo list, it is more likely that they are already motivated to do the
      tasks.)
+     
 ## Good Design
    - We think our design for adding tasks is clean and simple. For some existing todo apps, users 
      need to scroll down to the bottom of list to add a task. Instead of following that convention,
@@ -66,4 +67,7 @@
      a task is always consistent for users (no need to scroll different length depending on how long the
      existing list is): just type in the text box and hit add (new task automatically placed ath the end
      of list). 
+   - We think using single tap and double tap to distinguish between renaming and marking complete is simple and easy to understand for every users. We made the rename to be single tap because usually in other applciations, we single tap the text box to type some things. 
    
+## Notes
+   - For now, our hide button and completed tasks do not work well when the order of operations is as follows: 1) click "Hide", 2) mark task(s) complete. In this case, the tasks that were marked complete after clicking the Hide Button does not get hidden. We think that this is due to the problem that we do not have a list of marked tasks, but keep track of them by changing class of them. 
