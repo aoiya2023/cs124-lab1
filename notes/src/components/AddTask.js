@@ -1,7 +1,7 @@
 import './AddTask.css';
 import {useState} from 'react'
 
-export function AddTask (props){
+export default function AddTask(props) {
     const [text, setText] = useState('')
 
     function onSubmit (e) {

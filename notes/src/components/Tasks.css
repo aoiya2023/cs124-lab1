@@ -1,20 +1,12 @@
 /* Remove margins and padding from the list */
-ul {
+.lsItems {
     margin: 0;
     padding: 0;
-  }
+    /*overflow: auto;
+    overflow-y: scroll;*/
+
+}
+
   
-  /* Style the list items */
-  ul li {
-    cursor: pointer;
-    position: relative;
-    background: #eee;
-    transition: 0.2s;
-  }
-  
-  /* Set all odd list items to a different color*/
-  ul li:nth-child(odd) {
-    background: #ADCBCE; /*#C3E0E5*/
-  }
 
   

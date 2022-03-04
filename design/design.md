@@ -19,17 +19,16 @@
    top, which is where most people focus their attention (we noticed that we tend to look the upper half of
    screen and not so much near the bottom). 
    
-3. List alternate colors
-   - Items in lists alternate colors for better visibility. We thought that if there
-   is nothing separating items, it would be hard to distinguish between items.
-   We chose to use color instead of border because it simply looked better.
+3. List seperated by borders.
+   - Lists are seperated by borders so that the users can easily distinguish tasks.
 
 4. Hide and Delete buttons at the bottom.
-    - Hide and Delete buttons are located at the very bottom of the screen. From the analysis
+    - Hide and Delete buttons are located at the bottom of the screen. From the analysis
    of other apps for mobile, we noticed that control panels are often located at the bottom
    of screen. We decided to follow the convention of other apps and place the two
    buttons at the bottom. Since the two buttons have different functions, we made the buttons 
-   big and easily distinguishable.
+   big and easily distinguishable.  
+   - If new items are added and it overflows, 
 
 5. Colors mainly blue.
    - We made the colors mainly blue. It is mostly an aesthetic choice but also cool colors are 

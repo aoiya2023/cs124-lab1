@@ -9,9 +9,10 @@
     transition-duration: 0.5s;
     width: 50%;
 
-    position: absolute;
+    /*position: absolute;
     bottom: 0;
     right: 0;
+    */
 }
 .dltBtn:hover {
     background-color: #5885AF; /**/

@@ -1,7 +1,7 @@
 import './Tasks.css';
-import {Task} from './Task.js'
+import Task from './Task'
 
-export function Tasks (props){
+export default function Tasks (props){
     return (
         <ul className='lsItems'>
             {props.tasks.map((task) => (

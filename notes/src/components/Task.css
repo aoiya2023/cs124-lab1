@@ -7,7 +7,13 @@
     background: #ADCBCE; /*#C3E0E5*/
     overflow: hidden;
     width: 100%;
-    border: none;
+    font-size: 18px;
+    border: 3px;
+    padding-left: 20px;
+
+    display:inline-block;
+    border:1px solid #000;
+
 
 }
 
@@ -23,7 +29,7 @@
     text-decoration: line-through;
 }
 
-/* When clicked on, add a background color and strike out text */
+/* When double tapped, hide tasks that are marked complete */
 .hidden {
     display: none;
 }

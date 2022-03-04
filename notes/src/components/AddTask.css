@@ -4,9 +4,10 @@
     color: white;
     border: none;
     text-align: center;
-    width: 20%;
+    width: 30%;
     display: inline-block;
     transition-duration: 0.5s;
+    font-size: 18px;
     
 }
 .addBtn:hover {
@@ -25,7 +26,7 @@
     margin: 8px 0;
     border: none;
     border-radius: 0;
-    width: 100%;
+    width: 70%;
     padding: 20px 60px;
     box-sizing: border-box;
     float: left;

@@ -1,6 +1,6 @@
 import './Header.css';
 
-export function Header (props) {
+export default function Header (props) {
     return (
         <header className='header'>
             <h1>{props.title}</h1>

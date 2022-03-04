@@ -1,10 +1,10 @@
 import './index.css';
-import {useState} from 'react'
-import {Header} from './components/Header.js'
-import {AddTask} from './components/AddTask.js'
-import {Tasks} from './components/Tasks.js'
-import {HideButton} from './components/HideButton.js'
-import {DelButton} from './components/DelButton.js'
+import {useState} from 'react';
+import Header from './components/Header';
+import AddTask from './components/AddTask';
+import Tasks from './components/Tasks';
+import Footer from './components/Footer';
+
 
 
 
@@ -53,8 +53,7 @@ function App(props) {
       <Tasks tasks={tasks} className='lsItems'
       completedTask={completedTask}
       renameTask={renameTask}/>
-      <HideButton text={showComplete ? "Unhide" : "Hide"} hideTask={hideTask}/>
-      <DelButton text='Delete' deleteTask={deleteTask}/>
+      <Footer showComplete={showComplete} hideTask={hideTask} deleteTask={deleteTask}/>
     </div>
   );
 }
