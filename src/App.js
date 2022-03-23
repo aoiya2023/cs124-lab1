@@ -20,7 +20,6 @@ function App(props) {
     // Add task
     function addTask (e) {
         const complete = false
-        const hidden = false
         const id = Math.floor(Math.random() * 10000) + 1
         const newTask = {id,...e,complete}
         setTasks([...tasks, newTask])
