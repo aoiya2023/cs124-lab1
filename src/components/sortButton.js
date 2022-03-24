@@ -1,9 +1,9 @@
 import "./SortButton.css"
 
-export default function sortButton(props) {
+export default function SortButton(props) {
     return (
-        <button> Sort
-
+        <button onClick={props.sortedTask} className='sortBtn'>
+            {props.text}
         </button>
     )
 }
