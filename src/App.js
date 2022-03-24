@@ -1,5 +1,5 @@
 import './index.css';
-import {useState} from 'react';
+//import {useState} from 'react';
 import Header from './components/Header';
 import AddTask from './components/AddTask';
 import Tasks from './components/Tasks';
@@ -27,7 +27,7 @@ const collectionName = "Tasks-Collection"
 function App() {
 
     const q = query(collection(db, collectionName));
-    const [tasks, loading, error] = useCollectionData(q);
+    const [tasks, loading] = useCollectionData(q);
     //const [showComplete, setShowComplete] = useState(false);
 
     // Add task
