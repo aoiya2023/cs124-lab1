@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 import { initializeApp } from "firebase/app";
-import { collection, deleteDoc, doc, getFirestore, query, setDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc, getFirestore, query, serverTimestamp, setDoc, orderBy } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAJOGQftqdeOAdZZK5rf9tDX6kNIqSHK7Y",
@@ -26,10 +26,10 @@ const db = getFirestore(firebaseApp);
 const collectionName = "Tasks-Collection"
 
 function App() {
-
-    const q = query(collection(db, collectionName));
-    const [tasks, loading] = useCollectionData(q);
     const [showComplete, setShowComplete] = useState(false);
+    const [sortBy, setSorting] = useState("created");
+    const q = query(collection(db, collectionName), orderBy(sortBy));
+    const [tasks, loading] = useCollectionData(q);
 
     // Add task
     function addTask (taskName) {
@@ -40,7 +40,8 @@ function App() {
                 text: taskName,
                 complete: false,
                 hidden: false,
-                pirorityLevel: 1,
+                priorityLevel: 1,
+                created: serverTimestamp(),
             });
     }
 
@@ -67,7 +68,26 @@ function App() {
 
     // Prioritize Task
     function prioritizedTask (id, value) {
-        console.log("priority task")
+        let priority = value
+        if (value === 1) {   /* 1 is most urgent, 3 is least urgent*/ 
+            priority = 2
+        } else if (value === 2) {
+            priority = 3
+        } else {
+            priority = 1
+        }
+        setDoc(doc(db, collectionName, id), {priorityLevel : priority}, {merge: true});
+    }
+
+    // Sort Task
+    function sortedTask() {
+        if (sortBy === "text") {
+            setSorting("priorityLevel")
+        } else if (sortBy === "priorityLevel") {
+            setSorting("created")
+        } else {
+            setSorting("text")
+        }
     }
 
     if (loading) {
@@ -81,7 +101,8 @@ function App() {
       <Tasks tasks={tasks} className='lsItems'
       completedTask={completedTask}
       renamedTask={renamedTask}
-      prioritizedTask={prioritizedTask}/>
+      prioritizedTask={prioritizedTask}
+      sortedTask={sortedTask}/>
       <Footer showComplete={showComplete} hideTask={hideTask} deleteCompletedTask={deleteCompletedTask}/>
     </div>
   );

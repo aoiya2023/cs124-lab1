@@ -1,6 +1,5 @@
 import './Tasks.css';
-import Task from './Task'
-import { promiseProps } from 'firebase-tools/lib/utils';
+import Task from './Task';
 
 export default function Tasks (props){
     return (
