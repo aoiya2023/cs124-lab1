@@ -1,5 +1,6 @@
 import './Tasks.css';
 import Task from './Task'
+import { promiseProps } from 'firebase-tools/lib/utils';
 
 export default function Tasks (props){
     return (
@@ -10,7 +11,8 @@ export default function Tasks (props){
                         key={task.id}
                         task={task}
                         completedTask={props.completedTask}
-                        renamedTask={props.renamedTask}/>
+                        renamedTask={props.renamedTask}
+                        prioritizedTask={props.prioritizedTask}/>
                 ))}
             </ul>
         </div>

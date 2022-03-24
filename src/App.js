@@ -40,6 +40,7 @@ function App() {
                 text: taskName,
                 complete: false,
                 hidden: false,
+                pirorityLevel: 1,
             });
     }
 
@@ -65,8 +66,8 @@ function App() {
     }
 
     // Prioritize Task
-    function prioritizedTask () {
-
+    function prioritizedTask (id, value) {
+        console.log("priority task")
     }
 
     if (loading) {
@@ -79,7 +80,8 @@ function App() {
       <AddTask text='Add' addTask={addTask}/>
       <Tasks tasks={tasks} className='lsItems'
       completedTask={completedTask}
-      renamedTask={renamedTask}/>
+      renamedTask={renamedTask}
+      prioritizedTask={prioritizedTask}/>
       <Footer showComplete={showComplete} hideTask={hideTask} deleteCompletedTask={deleteCompletedTask}/>
     </div>
   );

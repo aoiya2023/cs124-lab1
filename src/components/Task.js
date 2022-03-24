@@ -1,6 +1,6 @@
 import './Task.css'
 import { useDoubleTap } from 'use-double-tap';
-import Priority from './components/PriodityButton'
+import PriorityButton from './PriorityButton'
 
 export default function Task (props) {
     const onDoubleTap = useDoubleTap((event) => {
@@ -14,6 +14,7 @@ export default function Task (props) {
             {...onDoubleTap}
             value={props.task.text}
         />
+        <PriorityButton text={props.priorityLevel} prioritizedTask={props.prioritizedTask}/>
         <></>
         </li>
     )
