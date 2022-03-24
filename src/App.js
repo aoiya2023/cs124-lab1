@@ -5,6 +5,7 @@ import AddTask from './components/AddTask';
 import Tasks from './components/Tasks';
 import Footer from './components/Footer';
 
+
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 import { initializeApp } from "firebase/app";
@@ -61,6 +62,11 @@ function App() {
     // Complete Task
     function completedTask (id, value) {
         setDoc(doc(db, collectionName, id), {complete: !value}, {merge: true});
+    }
+
+    // Prioritize Task
+    function prioritizedTask () {
+
     }
 
     if (loading) {
