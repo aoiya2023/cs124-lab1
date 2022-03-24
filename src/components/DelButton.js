@@ -2,7 +2,7 @@ import './DelButton.css';
 
 export default function DelButton(props) {
     return (
-        <button onClick={props.deleteTask}
+        <button onClick={props.deleteCompletedTask}
                 className='dltBtn'>
             {props.text}
         </button>
