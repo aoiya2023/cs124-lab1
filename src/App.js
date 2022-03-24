@@ -28,12 +28,7 @@ function App() {
 
     const q = query(collection(db, collectionName));
     const [tasks, loading, error] = useCollectionData(q);
-    const [showComplete, setShowComplete] = useState(false);
-
-    // Delete task
-    function deleteCompletedTask () {
-        // setTasks(tasks.filter((task) => !task.complete))
-    }
+    //const [showComplete, setShowComplete] = useState(false);
 
     // Add task
     function addTask (taskName) {
@@ -48,6 +43,12 @@ function App() {
 
     }
 
+    // Delete task
+    function deleteTask () {
+        // setTasks(tasks.filter((task) => !task.complete))
+        tasks.forEach(task => task.complete && deleteDoc(doc(db, collectionName, task.id)));
+    }
+
     // Hide Task
     function hideTask () {
     //     setTasks(tasks.map((task) => task.complete
@@ -57,15 +58,13 @@ function App() {
 
     // Rename Task
     function renameTask (id, value) {
-        // setTasks(tasks.map (
-        //     task => task.id === id ? {...task, text: value} : task))
-   
+        setDoc(doc(db, collectionName, id), {text: value}, {merge: true})
     }
 
     // Complete Task
     function completedTask (id) {
-        // setTasks(tasks.map((task) => task.id === id
-        //     ? {...task, complete: !task.complete} : task))
+        // setTasks(tasks.map((task) => task.id === id  ? {...task, complete: !task.complete} : task))
+
     }
 
     if (loading) {
@@ -79,9 +78,10 @@ function App() {
       <Tasks tasks={tasks} className='lsItems'
       completedTask={completedTask}
       renameTask={renameTask}/>
-      <Footer showComplete={showComplete} hideTask={hideTask} />
+      <Footer  hideTask={hideTask} deleteTask={deleteTask}/>
     </div>
   );
+  //showComplete={showComplete}
 }
 
 export default App;
