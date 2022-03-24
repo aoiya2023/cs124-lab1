@@ -1,5 +1,5 @@
 import './index.css';
-//import {useState} from 'react';
+import {useState} from 'react';
 import Header from './components/Header';
 import AddTask from './components/AddTask';
 import Tasks from './components/Tasks';
@@ -28,7 +28,7 @@ function App() {
 
     const q = query(collection(db, collectionName));
     const [tasks, loading] = useCollectionData(q);
-    //const [showComplete, setShowComplete] = useState(false);
+    const [showComplete, setShowComplete] = useState(false);
 
     // Add task
     function addTask (taskName) {
@@ -40,31 +40,27 @@ function App() {
                 complete: false,
                 hidden: false,
             });
-
     }
 
     // Delete task
-    function deleteTask () {
-        // setTasks(tasks.filter((task) => !task.complete))
-        tasks.forEach(task => task.complete && deleteDoc(doc(db, collectionName, task.id)));
+    function deleteCompletedTask () {
+        tasks.forEach(task => task.complete && !task.hidden && deleteDoc(doc(db, collectionName, task.id)));
     }
 
     // Hide Task
     function hideTask () {
-    //     setTasks(tasks.map((task) => task.complete
-    //         ? {...task, hidden: !task.hidden} : task))
-    //     setShowComplete(!showComplete)
+        setShowComplete(!showComplete)
+        tasks.forEach(task => task.complete && setDoc(doc(db, collectionName, task.id), {hidden: !task.hidden}, {merge: true}));
     }
 
     // Rename Task
-    function renameTask (id, value) {
-        setDoc(doc(db, collectionName, id), {text: value}, {merge: true})
+    function renamedTask (id, value) {
+        setDoc(doc(db, collectionName, id), {text: value}, {merge: true});
     }
 
     // Complete Task
-    function completedTask (id) {
-        // setTasks(tasks.map((task) => task.id === id  ? {...task, complete: !task.complete} : task))
-
+    function completedTask (id, value) {
+        setDoc(doc(db, collectionName, id), {complete: !value}, {merge: true});
     }
 
     if (loading) {
@@ -77,11 +73,10 @@ function App() {
       <AddTask text='Add' addTask={addTask}/>
       <Tasks tasks={tasks} className='lsItems'
       completedTask={completedTask}
-      renameTask={renameTask}/>
-      <Footer  hideTask={hideTask} deleteTask={deleteTask}/>
+      renamedTask={renamedTask}/>
+      <Footer showComplete={showComplete} hideTask={hideTask} deleteCompletedTask={deleteCompletedTask}/>
     </div>
   );
-  //showComplete={showComplete}
 }
 
 export default App;

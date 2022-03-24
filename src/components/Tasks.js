@@ -9,7 +9,7 @@ export default function Tasks (props){
                     key={task.id}
                     task={task}
                     completedTask={props.completedTask}
-                    renameTask={props.renameTask}/>
+                    renamedTask={props.renamedTask}/>
             ))}
         </ul>
     )

@@ -5,7 +5,7 @@ export default function Footer(props) {
     return (
         <footer className='footer'>
             <HideButton text={props.showComplete ? "Unhide" : "Hide"} hideTask={props.hideTask}/>
-            <DelButton text='Delete' deleteTask={props.deleteTask}/>
+            <DelButton text='Delete' deleteCompletedTask={props.deleteCompletedTask}/>
         </footer>
     )
 }
