@@ -98,12 +98,10 @@ function App() {
     <div className='container'>
       <Header title='TO DO LIST'/>
       <AddTask text='Add' addTask={addTask}/>
-      <div className="tasks">
-        <Tasks tasks={tasks} className='lsItems'
+      <Tasks tasks={tasks} className='lsItems'
         completedTask={completedTask}
         renamedTask={renamedTask}
         prioritizedTask={prioritizedTask}/>
-      </div>
       <Footer showComplete={showComplete} 
       sortBy={sortBy} 
       hideTask={hideTask} 

@@ -22,13 +22,16 @@
 3. List seperated by borders.
    - Lists are seperated by borders so that the users can easily distinguish tasks.
 
-4. Hide and Delete buttons at the bottom.
+4. Hide, Delete, and Sort buttons at the bottom.
     - Hide and Delete buttons are located at the bottom of the screen. From the analysis
    of other apps for mobile, we noticed that control panels are often located at the bottom
    of screen. We decided to follow the convention of other apps and place the two
    buttons at the bottom. Since the two buttons have different functions, we made the buttons 
-   big and easily distinguishable.  
-   - If new items are added and it overflows, 
+   big and easily distinguishable.
+
+    - Along with Hide and Delete buttons, Sort buttons are at the bottom of the app as it is one
+   of the control buttons. Users can tap to switch between different sorting rules: by name, priority,
+   or creation date.   
 
 5. Colors mainly blue.
    - We made the colors mainly blue. It is mostly an aesthetic choice but also cool colors are 

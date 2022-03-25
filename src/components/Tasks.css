@@ -2,8 +2,9 @@
 .lsItems {
     margin: 0;
     padding: 0;
-    /*overflow: auto;
-    overflow-y: scroll;*/
+    height: 342px;
+    overflow: auto;
+    overflow-y: scroll;
 
 }
 
