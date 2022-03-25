@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     height: 342px;
+    border-style: solid;
     overflow: auto;
     overflow-y: scroll;
 

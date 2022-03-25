@@ -28,10 +28,10 @@
    of screen. We decided to follow the convention of other apps and place the two
    buttons at the bottom. Since the two buttons have different functions, we made the buttons 
    big and easily distinguishable.
-
-    - Along with Hide and Delete buttons, Sort buttons are at the bottom of the app as it is one
-   of the control buttons. Users can tap to switch between different sorting rules: by name, priority,
-   or creation date.   
+    - Sort button is also located at the bottom of the screen along with two other buttons. 
+	 Users can sort the current tasks by one of the following rules: name, creation date, or priority. They
+   can switch between different sorting rule by clicking the button. The text shown is the current sorting
+   rule which by default is creation date.   
 
 5. Colors mainly blue.
    - We made the colors mainly blue. It is mostly an aesthetic choice but also cool colors are 
