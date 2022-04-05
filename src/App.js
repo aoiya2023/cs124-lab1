@@ -10,6 +10,7 @@ import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 import { initializeApp } from "firebase/app";
 import { collection, deleteDoc, doc, getFirestore, query, serverTimestamp, setDoc, orderBy } from "firebase/firestore";
+// updateDoc
 
 const firebaseConfig = {
     apiKey: "AIzaSyAJOGQftqdeOAdZZK5rf9tDX6kNIqSHK7Y",
@@ -27,9 +28,9 @@ const collectionName = "Tasks-Collection"
 
 function App() {
     const [showComplete, setShowComplete] = useState(false);
-    const [sortBy, setSorting] = useState("created");
+    const [sortBy, setSortBy] = useState("created");
     const q = query(collection(db, collectionName), orderBy(sortBy));
-    const [tasks, loading] = useCollectionData(q);
+    const [tasks, loading, error] = useCollectionData(q);
 
     // Add task
     function addTask (taskName) {
@@ -46,14 +47,13 @@ function App() {
     }
 
     // Delete task
-    function deleteCompletedTask () {
+    function deleteCompletedTasks () {
         tasks.forEach(task => task.complete && !task.hidden && deleteDoc(doc(db, collectionName, task.id)));
     }
 
     // Hide Task
     function hideTask () {
         setShowComplete(!showComplete)
-        tasks.forEach(task => task.complete && setDoc(doc(db, collectionName, task.id), {hidden: !task.hidden}, {merge: true}));
     }
 
     // Rename Task
@@ -82,30 +82,41 @@ function App() {
     // Sort Task
     function sortedTask() {
         if (sortBy === "text") {
-            setSorting("priorityLevel")
+            setSortBy("priorityLevel")
         } else if (sortBy === "priorityLevel") {
-            setSorting("created")
+            setSortBy("created")
         } else {
-            setSorting("text")
+            setSortBy("text")
         }
     }
 
+    // Loading Screen
     if (loading) {
         return "loading..";
+    }
+
+    // Error Screen
+    if (error) {
+        return "Error Occured";
+    }
+
+    let filteredList = tasks
+    if (showComplete) {
+        filteredList = tasks.filter(task => !task.complete);
     }
 
     return (
     <div className='container'>
       <Header title='TO DO LIST'/>
       <AddTask text='Add' addTask={addTask}/>
-      <Tasks tasks={tasks} className='lsItems'
+      <Tasks tasks={filteredList} className='lsItems'
         completedTask={completedTask}
         renamedTask={renamedTask}
         prioritizedTask={prioritizedTask}/>
       <Footer showComplete={showComplete} 
       sortBy={sortBy} 
       hideTask={hideTask} 
-      deleteCompletedTask={deleteCompletedTask}
+      deleteCompletedTasks={deleteCompletedTasks}
       sortedTask={sortedTask}/>
     </div>
   );
