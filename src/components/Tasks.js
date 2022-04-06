@@ -10,8 +10,8 @@ export default function Tasks (props){
                         key={task.id}
                         task={task}
                         completedTask={props.completedTask}
-                        renamedTask={props.renamedTask}
-                        prioritizedTask={props.prioritizedTask}/>
+                        renameTask={props.renameTask}
+                        changePriority={props.changePriority}/>
                 ))}
             </ul>
         </div>

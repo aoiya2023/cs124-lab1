@@ -9,8 +9,7 @@ import Footer from './components/Footer';
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 import { initializeApp } from "firebase/app";
-import { collection, deleteDoc, doc, getFirestore, query, serverTimestamp, setDoc, orderBy } from "firebase/firestore";
-// updateDoc
+import { collection, deleteDoc, doc, getFirestore, query, serverTimestamp, setDoc, orderBy, updateDoc } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAJOGQftqdeOAdZZK5rf9tDX6kNIqSHK7Y",
@@ -29,6 +28,7 @@ const collectionName = "Tasks-Collection"
 function App() {
     const [showComplete, setShowComplete] = useState(false);
     const [sortBy, setSortBy] = useState("created");
+    // const [hidden, setHidden] = useState(false);
     const q = query(collection(db, collectionName), orderBy(sortBy));
     const [tasks, loading, error] = useCollectionData(q);
 
@@ -40,15 +40,16 @@ function App() {
                 id: uniqueId,
                 text: taskName,
                 complete: false,
-                hidden: false,
                 priorityLevel: 1,
+                //hidden: false,
                 created: serverTimestamp(),
             });
     }
 
     // Delete task
     function deleteCompletedTasks () {
-        tasks.forEach(task => task.complete && !task.hidden && deleteDoc(doc(db, collectionName, task.id)));
+        tasks.forEach(task => task.complete && deleteDoc(doc(db, collectionName, task.id)));
+        // && !task.hidden
     }
 
     // Hide Task
@@ -57,8 +58,8 @@ function App() {
     }
 
     // Rename Task
-    function renamedTask (id, value) {
-        setDoc(doc(db, collectionName, id), {text: value}, {merge: true});
+    function renameTask (id, value) {
+        updateDoc(doc(db, collectionName, id), {text: value});
     }
 
     // Complete Task
@@ -67,7 +68,7 @@ function App() {
     }
 
     // Prioritize Task
-    function prioritizedTask (id, value) {
+    function changePriority (id, value) {
         let priority = value
         if (value === 1) {   /* 1 is most urgent, 3 is least urgent*/ 
             priority = 2
@@ -111,8 +112,8 @@ function App() {
       <AddTask text='Add' addTask={addTask}/>
       <Tasks tasks={filteredList} className='lsItems'
         completedTask={completedTask}
-        renamedTask={renamedTask}
-        prioritizedTask={prioritizedTask}/>
+        renameTask={renameTask}
+        changePriority={changePriority}/>
       <Footer showComplete={showComplete} 
       sortBy={sortBy} 
       hideTask={hideTask} 

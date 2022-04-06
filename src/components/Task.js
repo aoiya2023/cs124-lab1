@@ -11,11 +11,11 @@ export default function Task (props) {
         <li className={`${props.task.hidden ? 'hidden' : ''}`}>
         <input type='text'
             className={`lsItem ${props.task.complete ? 'complete' : ''} ` }
-            onChange={(e) => props.renamedTask(props.task.id, e.target.value)}
+            onChange={(e) => props.renameTask(props.task.id, e.target.value)}
             {...onDoubleTap}
             value={props.task.text}
         />
-        <PriorityButton text={priorityLabel} prioritizedTask={props.prioritizedTask} task={props.task}/>
+        <PriorityButton text={priorityLabel} changePriority={props.changePriority} task={props.task}/>
         </li>
     )
 }
