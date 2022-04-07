@@ -30,35 +30,35 @@ const subCollectionName = "Tasks-Collection";
 function App() {
     const [showComplete, setShowComplete] = useState(false);
     const [sortBy, setSortBy] = useState("created");
-    const [thisListId, setThisListId] = useState("SJLdlfJSdfjls") // what state to use?
+    const [thisListId] = useState("SJLdlfJSdfjls") // what state to use? , setThisListId
     // const [hidden, setHidden] = useState(false);
     
     const qList = query(collection(db, collectionName), orderBy(sortBy));
     const [lists, loading, error] = useCollectionData(qList);
 
     const qTask = query(collection(db, collectionName, thisListId, subCollectionName))
-    const [tasks, loadingTasks, errorTasks] = useCollectionData(qTask);
+    const [tasks] = useCollectionData(qTask); // , loadingTasks, errorTasks
 
     // Add List
-		function addList (listName) {
-			const listId = generateUniqueID();
-			setDoc(doc(db, collectionName, listId),
-	      {
-					id: listId,
-					name: listName,
-					created: serverTimestamp(),
-				})
-		}
+    // function addList (listName) {
+    //     const listId = generateUniqueID();
+    //     setDoc(doc(db, collectionName, listId),
+    //     {
+    //             id: listId,
+    //             name: listName,
+    //             created: serverTimestamp(),
+    //         })
+    // }
 
     // Rename List
     function renameList(id, value) {
        updateDoc(doc(db, collectionName, id), {name: value});
     }
 
-		// Delete List 
-    function deleteList (id) {
-       deleteDoc(doc(db, collectionName, lists.id));
-    }
+	// Delete List 
+    // function deleteList (id) {
+    //    deleteDoc(doc(db, collectionName, lists.id));
+    // }
     
     // Add task
     function addTask (taskName) {
