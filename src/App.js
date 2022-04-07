@@ -4,6 +4,7 @@ import Header from './components/Header';
 import AddTask from './components/AddTask';
 import Tasks from './components/Tasks';
 import Footer from './components/Footer';
+import Sidebar from './components/Sidebar';
 
 
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
@@ -23,19 +24,46 @@ const firebaseConfig = {
 const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
-const collectionName = "Tasks-Collection"
+const collectionName = "List-Collection";
+const subCollectionName = "Tasks-Collection";
 
 function App() {
     const [showComplete, setShowComplete] = useState(false);
     const [sortBy, setSortBy] = useState("created");
+    const [thisListId, setThisListId] = useState("SJLdlfJSdfjls") // what state to use?
     // const [hidden, setHidden] = useState(false);
-    const q = query(collection(db, collectionName), orderBy(sortBy));
-    const [tasks, loading, error] = useCollectionData(q);
+    
+    const qList = query(collection(db, collectionName), orderBy(sortBy));
+    const [lists, loading, error] = useCollectionData(qList);
 
+    const qTask = query(collection(db, collectionName, thisListId, subCollectionName))
+    const [tasks, loadingTasks, errorTasks] = useCollectionData(qTask);
+
+    // Add List
+		function addList (listName) {
+			const listId = generateUniqueID();
+			setDoc(doc(db, collectionName, listId),
+	      {
+					id: listId,
+					name: listName,
+					created: serverTimestamp(),
+				})
+		}
+
+    // Rename List
+    function renameList(id, value) {
+       updateDoc(doc(db, collectionName, id), {name: value});
+    }
+
+		// Delete List 
+    function deleteList (id) {
+       deleteDoc(doc(db, collectionName, lists.id));
+    }
+    
     // Add task
     function addTask (taskName) {
         const uniqueId = generateUniqueID();
-        setDoc(doc(db, collectionName, uniqueId),
+        setDoc(doc(db, collectionName, thisListId, subCollectionName, uniqueId),
             {
                 id: uniqueId,
                 text: taskName,
@@ -98,7 +126,9 @@ function App() {
 
     // Error Screen
     if (error) {
-        return "Error Occured";
+        return (
+					<p>Error: {JSON.stringify(error)}</p>
+				)
     }
 
     let filteredList = tasks
@@ -107,18 +137,24 @@ function App() {
     }
 
     return (
-    <div className='container'>
+    <div id='container'>
       <Header title='TO DO LIST'/>
-      <AddTask text='Add' addTask={addTask}/>
-      <Tasks tasks={filteredList} className='lsItems'
-        completedTask={completedTask}
-        renameTask={renameTask}
-        changePriority={changePriority}/>
-      <Footer showComplete={showComplete} 
-      sortBy={sortBy} 
-      hideTask={hideTask} 
-      deleteCompletedTasks={deleteCompletedTasks}
-      sortedTask={sortedTask}/>
+      <Sidebar pageWrapId={'page-wrap'} outerContainerId={'container'}
+                    lists={lists}
+					renameList={renameList}/>
+      <div id='page-wrap'>
+        <AddTask text='Add' addTask={addTask}/>
+        <Tasks tasks={filteredList} className='lsItems'
+            completedTask={completedTask}
+            renameTask={renameTask}
+            changePriority={changePriority}/>
+        <Footer showComplete={showComplete} 
+        sortBy={sortBy} 
+        hideTask={hideTask} 
+        deleteCompletedTasks={deleteCompletedTasks}
+        sortedTask={sortedTask}/>
+      </div>
+      
     </div>
   );
 }
