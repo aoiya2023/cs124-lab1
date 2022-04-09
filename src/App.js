@@ -31,7 +31,6 @@ function App() {
     const [showComplete, setShowComplete] = useState(false);
     const [sortBy, setSortBy] = useState("created");
     const [thisListId, setThisListId] = useState("SJLdlfJSdfjls") // what state to use?
-    // const [hidden, setHidden] = useState(false);
     
     const qList = query(collection(db, collectionName));
     const [lists, loading, error] = useCollectionData(qList);
@@ -39,22 +38,20 @@ function App() {
     const qTask = query(collection(db, collectionName, thisListId, subCollectionName), orderBy(sortBy))
     const [tasks, loadingTasks, errorTasks] = useCollectionData(qTask);
 
-    // Add List
-		function addList (listName) {
-            console.log('addList')
-		// 	const listId = generateUniqueID();
-		// 	setDoc(doc(db, collectionName, listId),
-	    //   {
-		// 			id: listId,
-		// 			name: listName,
-		// 			created: serverTimestamp(),
-		// 		})
-		}
-
+    function addList(listName) {
+        const uniqueId = generateUniqueID();
+        setDoc(doc(db, collectionName, uniqueId),
+            {
+                id: uniqueId,
+                text: listName,
+                created: serverTimestamp(),
+            });
+        
+    }
+    
     // Rename List
     function renameList(id, value) {
-       //updateDoc(doc(db, collectionName, id), {name: value});
-       console.log('renameList')
+       updateDoc(doc(db, collectionName, id), {text: value});
     }
 
 		// Delete List 
@@ -72,7 +69,6 @@ function App() {
                 text: taskName,
                 complete: false,
                 priorityLevel: 1,
-                //hidden: false,
                 created: serverTimestamp(),
             });
     }

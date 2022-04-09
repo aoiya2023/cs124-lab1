@@ -10,7 +10,7 @@ export default function AddList(props) {
             alert('Please add a list name.')
             return
         }
-        props.handleAddList(text)
+        props.addList(text)
         setText('')
     }
 

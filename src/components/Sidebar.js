@@ -12,9 +12,7 @@ import AddList from './AddList';
 export default function Sidebar(props) {
   const [showPopup, setShowPopup] = useState(false);
 
-  function handleAddList() {
-    console.log('list gets added');
-  }
+  
 
   function toggleModal() {
     setShowPopup(!showPopup);
@@ -24,17 +22,17 @@ export default function Sidebar(props) {
     <Menu>
       <div className='List'>
         <IconButton onClick={toggleModal}><AddIcon/></IconButton>
-        {/* {props.lists.map((list) => (
+        {props.lists?.map((list) => (
                 <SidebarItem
                     key={list.id}
                     list={list}
                     renameList={props.renameList}/>
-            ))} */}
+            ))}
       </div>
       
-      {showPopup && <Popup onClose={toggleModal} onAdd={handleAddList}>
+      {showPopup && <Popup onClose={toggleModal} onAdd={props.addList}>
         <div>
-          <AddList/>
+          <AddList addList={props.addList}/>
         </div>
       </Popup>}
       

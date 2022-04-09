@@ -9,13 +9,6 @@ function Popup(props) {
                         onClick={props.onClose}>
                     Cancel
                 </button>
-                <button className={"alert-button alert-ok"} type={"button"}
-                        onClick={() => {
-                            props.onClose();
-                            props.onAdd();
-                        }}>
-                    Add
-                </button>
             </div>
         </div>
     </div>
