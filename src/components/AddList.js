@@ -1,23 +1,23 @@
-import './AddTask.css';
+import './AddList.css';
 import {useState} from 'react';
 
-export default function AddTask(props) {
+export default function AddList(props) {
     const [text, setText] = useState('')
 
     function onSubmit (e) {
         e.preventDefault()
         if(!text) {
-            alert('Please add a task.')
+            alert('Please add a list name.')
             return
         }
-        props.addTask(text)
+        props.handleAddList(text)
         setText('')
     }
 
     return (
         <form className='form' onSubmit={onSubmit}>
             <input type='text'
-                   placeholder='todo...'
+                   placeholder='list name...'
                    className='input'
                    value={text}
                    onChange={(e) => setText(e.target.value)}/>

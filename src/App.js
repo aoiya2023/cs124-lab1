@@ -30,35 +30,38 @@ const subCollectionName = "Tasks-Collection";
 function App() {
     const [showComplete, setShowComplete] = useState(false);
     const [sortBy, setSortBy] = useState("created");
-    const [thisListId] = useState("SJLdlfJSdfjls") // what state to use? , setThisListId
+    const [thisListId, setThisListId] = useState("SJLdlfJSdfjls") // what state to use?
     // const [hidden, setHidden] = useState(false);
     
-    const qList = query(collection(db, collectionName), orderBy(sortBy));
+    const qList = query(collection(db, collectionName));
     const [lists, loading, error] = useCollectionData(qList);
 
-    const qTask = query(collection(db, collectionName, thisListId, subCollectionName))
-    const [tasks] = useCollectionData(qTask); // , loadingTasks, errorTasks
+    const qTask = query(collection(db, collectionName, thisListId, subCollectionName), orderBy(sortBy))
+    const [tasks, loadingTasks, errorTasks] = useCollectionData(qTask);
 
     // Add List
-    // function addList (listName) {
-    //     const listId = generateUniqueID();
-    //     setDoc(doc(db, collectionName, listId),
-    //     {
-    //             id: listId,
-    //             name: listName,
-    //             created: serverTimestamp(),
-    //         })
-    // }
+		function addList (listName) {
+            console.log('addList')
+		// 	const listId = generateUniqueID();
+		// 	setDoc(doc(db, collectionName, listId),
+	    //   {
+		// 			id: listId,
+		// 			name: listName,
+		// 			created: serverTimestamp(),
+		// 		})
+		}
 
     // Rename List
     function renameList(id, value) {
-       updateDoc(doc(db, collectionName, id), {name: value});
+       //updateDoc(doc(db, collectionName, id), {name: value});
+       console.log('renameList')
     }
 
-	// Delete List 
-    // function deleteList (id) {
-    //    deleteDoc(doc(db, collectionName, lists.id));
-    // }
+		// Delete List 
+    function deleteList (id) {
+       //deleteDoc(doc(db, collectionName, lists.id));
+       console.log('deleteList')
+    }
     
     // Add task
     function addTask (taskName) {
@@ -76,7 +79,7 @@ function App() {
 
     // Delete task
     function deleteCompletedTasks () {
-        tasks.forEach(task => task.complete && deleteDoc(doc(db, collectionName, task.id)));
+        tasks.forEach(task => task.complete && deleteDoc(doc(db, collectionName, thisListId, subCollectionName, task.id)));
         // && !task.hidden
     }
 
@@ -87,12 +90,12 @@ function App() {
 
     // Rename Task
     function renameTask (id, value) {
-        updateDoc(doc(db, collectionName, id), {text: value});
+        updateDoc(doc(db, collectionName, thisListId, subCollectionName, id), {text: value});
     }
 
     // Complete Task
     function completedTask (id, value) {
-        setDoc(doc(db, collectionName, id), {complete: !value}, {merge: true});
+        setDoc(doc(db, collectionName, thisListId, subCollectionName, id), {complete: !value}, {merge: true});
     }
 
     // Prioritize Task
@@ -105,7 +108,7 @@ function App() {
         } else {
             priority = 1
         }
-        setDoc(doc(db, collectionName, id), {priorityLevel : priority}, {merge: true});
+        setDoc(doc(db, collectionName, thisListId, subCollectionName, id), {priorityLevel : priority}, {merge: true});
     }
 
     // Sort Task
@@ -141,9 +144,10 @@ function App() {
       <Header title='TO DO LIST'/>
       <Sidebar pageWrapId={'page-wrap'} outerContainerId={'container'}
                     lists={lists}
+                    addList={addList}
 					renameList={renameList}/>
       <div id='page-wrap'>
-        <AddTask text='Add' addTask={addTask}/>
+        <AddTask addTask={addTask}/>
         <Tasks tasks={filteredList} className='lsItems'
             completedTask={completedTask}
             renameTask={renameTask}
