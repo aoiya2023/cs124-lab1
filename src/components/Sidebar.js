@@ -12,8 +12,6 @@ import AddList from './AddList';
 export default function Sidebar(props) {
   const [showPopup, setShowPopup] = useState(false);
 
-  
-
   function toggleModal() {
     setShowPopup(!showPopup);
   }
@@ -26,7 +24,8 @@ export default function Sidebar(props) {
                 <SidebarItem
                     key={list.id}
                     list={list}
-                    renameList={props.renameList}/>
+                    renameList={props.renameList}
+                    deleteList={props.deleteList}/>
             ))}
       </div>
       

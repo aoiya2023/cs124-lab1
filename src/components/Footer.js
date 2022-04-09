@@ -1,4 +1,4 @@
-import DelButton from './DelButton'
+import TaskDelButton from './TaskDelButton'
 import HideButton from './HideButton'
 import SortButton from './SortButton'
 import './Footer.css';
@@ -9,7 +9,7 @@ export default function Footer(props) {
     return (
         <footer className='footer'>
             <HideButton text={props.showComplete ? "Show" : "Hide"} hideTask={props.hideTask}/>
-            <DelButton text='Delete' deleteCompletedTasks={props.deleteCompletedTasks}/>
+            <TaskDelButton text='Delete' deleteCompletedTasks={props.deleteCompletedTasks}/>
             <SortButton text={sortLabel} sortedTask={props.sortedTask}/>
         </footer>
     )

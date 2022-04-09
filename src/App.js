@@ -1,16 +1,13 @@
 import './index.css';
 import {useState} from 'react';
 import Header from './components/Header';
-import AddTask from './components/AddTask';
-import Tasks from './components/Tasks';
-import Footer from './components/Footer';
 import Sidebar from './components/Sidebar';
-
+import TaskSupplier from './components/TaskSupplier';
 
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 import { initializeApp } from "firebase/app";
-import { collection, deleteDoc, doc, getFirestore, query, serverTimestamp, setDoc, orderBy, updateDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc, getFirestore, query, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAJOGQftqdeOAdZZK5rf9tDX6kNIqSHK7Y",
@@ -25,18 +22,12 @@ const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
 const collectionName = "List-Collection";
-const subCollectionName = "Tasks-Collection";
 
 function App() {
-    const [showComplete, setShowComplete] = useState(false);
-    const [sortBy, setSortBy] = useState("created");
     const [thisListId, setThisListId] = useState("SJLdlfJSdfjls") // what state to use?
     
     const qList = query(collection(db, collectionName));
     const [lists, loading, error] = useCollectionData(qList);
-
-    const qTask = query(collection(db, collectionName, thisListId, subCollectionName), orderBy(sortBy))
-    const [tasks, loadingTasks, errorTasks] = useCollectionData(qTask);
 
     function addList(listName) {
         const uniqueId = generateUniqueID();
@@ -49,73 +40,20 @@ function App() {
         
     }
     
+    // Set List Id
+    function setListId (id) {
+        setThisListId(id);
+    }
+
     // Rename List
     function renameList(id, value) {
        updateDoc(doc(db, collectionName, id), {text: value});
     }
 
-		// Delete List 
-    function deleteList (id) {
-       //deleteDoc(doc(db, collectionName, lists.id));
-       console.log('deleteList')
-    }
-    
-    // Add task
-    function addTask (taskName) {
-        const uniqueId = generateUniqueID();
-        setDoc(doc(db, collectionName, thisListId, subCollectionName, uniqueId),
-            {
-                id: uniqueId,
-                text: taskName,
-                complete: false,
-                priorityLevel: 1,
-                created: serverTimestamp(),
-            });
-    }
-
-    // Delete task
-    function deleteCompletedTasks () {
-        tasks.forEach(task => task.complete && deleteDoc(doc(db, collectionName, thisListId, subCollectionName, task.id)));
-        // && !task.hidden
-    }
-
-    // Hide Task
-    function hideTask () {
-        setShowComplete(!showComplete)
-    }
-
-    // Rename Task
-    function renameTask (id, value) {
-        updateDoc(doc(db, collectionName, thisListId, subCollectionName, id), {text: value});
-    }
-
-    // Complete Task
-    function completedTask (id, value) {
-        setDoc(doc(db, collectionName, thisListId, subCollectionName, id), {complete: !value}, {merge: true});
-    }
-
-    // Prioritize Task
-    function changePriority (id, value) {
-        let priority = value
-        if (value === 1) {   /* 1 is most urgent, 3 is least urgent*/ 
-            priority = 2
-        } else if (value === 2) {
-            priority = 3
-        } else {
-            priority = 1
-        }
-        setDoc(doc(db, collectionName, thisListId, subCollectionName, id), {priorityLevel : priority}, {merge: true});
-    }
-
-    // Sort Task
-    function sortedTask() {
-        if (sortBy === "text") {
-            setSortBy("priorityLevel")
-        } else if (sortBy === "priorityLevel") {
-            setSortBy("created")
-        } else {
-            setSortBy("text")
-        }
+	// Delete List 
+    function deleteList() {
+        // lists.forEach(list => list.id===id && deleteDoc(doc(db, collectionName, id)));
+        console.log("click");
     }
 
     // Loading Screen
@@ -126,35 +64,21 @@ function App() {
     // Error Screen
     if (error) {
         return (
-					<p>Error: {JSON.stringify(error)}</p>
-				)
+			<p>Error: {JSON.stringify(error)}</p>
+		)
     }
-
-    let filteredList = tasks
-    if (showComplete) {
-        filteredList = tasks.filter(task => !task.complete);
-    }
-
+    
     return (
     <div id='container'>
       <Header title='TO DO LIST'/>
-      <Sidebar pageWrapId={'page-wrap'} outerContainerId={'container'}
-                    lists={lists}
-                    addList={addList}
-					renameList={renameList}/>
-      <div id='page-wrap'>
-        <AddTask addTask={addTask}/>
-        <Tasks tasks={filteredList} className='lsItems'
-            completedTask={completedTask}
-            renameTask={renameTask}
-            changePriority={changePriority}/>
-        <Footer showComplete={showComplete} 
-        sortBy={sortBy} 
-        hideTask={hideTask} 
-        deleteCompletedTasks={deleteCompletedTasks}
-        sortedTask={sortedTask}/>
-      </div>
-      
+      <Sidebar outerContainerId={'container'}
+            lists={lists}
+            addList={addList}
+            renameList={renameList}
+            deleteList={deleteList} 
+        />
+        <TaskSupplier db={db} thisListId={thisListId}/>
+              
     </div>
   );
 }
