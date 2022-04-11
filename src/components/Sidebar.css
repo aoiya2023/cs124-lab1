@@ -20,7 +20,14 @@
 
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
-    left: 50px;
+    position: absolute !important;
+    left: 10px;
+    top: 40px !important;
+    
+}
+
+.bm-no-button {
+    display: none;
 }
   
 /* Color/shape of close button cross */
@@ -73,4 +80,17 @@ Note: Beware of modifying this element as it can break the animations - you shou
 /* Styling of overlay */
 .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
+}
+
+.add-list {
+    display: flex;
+    flex-direction: row;
+}
+
+.add-list-text {
+    width: 90%;
+}
+
+.add-list-button {
+    width: 10%;
 }

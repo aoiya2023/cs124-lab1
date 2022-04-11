@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton';
 export default function ListDelButton(props) {
     return (
         <IconButton onClick={(e) => {props.deleteList(props.list.id)}}>
-            <DeleteIcon/>
+            <DeleteIcon style={{ fill: '#0072ea' }}/>
         </IconButton>
     )
 }

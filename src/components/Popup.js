@@ -4,12 +4,10 @@ function Popup(props) {
     return <div className={"backdrop"}>
         <div className="modal">
             {props.children}
-            <div className="alert-buttons">
-                <button className={"alert-button alert-cancel"} type={"button"}
-                        onClick={props.onClose}>
-                    Close
-                </button>
-            </div>
+            <button className={"alert-close"} type={"button"}
+                    onClick={props.onClose}>
+                Close
+            </button>
         </div>
     </div>
 }

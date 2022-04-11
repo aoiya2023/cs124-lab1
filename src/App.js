@@ -7,7 +7,7 @@ import TaskSupplier from './components/TaskSupplier';
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 import { initializeApp } from "firebase/app";
-import { collection, deleteDoc, doc, getFirestore, query, serverTimestamp, setDoc, updateDoc, getDoc } from "firebase/firestore";
+import { collection, deleteDoc, doc, getFirestore, query, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAJOGQftqdeOAdZZK5rf9tDX6kNIqSHK7Y",
@@ -22,7 +22,7 @@ const firebaseApp = initializeApp(firebaseConfig);
 const db = getFirestore(firebaseApp);
 
 const collectionName = "List-Collection";
-const subCollectionName = "Tasks-Collection";
+// const subCollectionName = "Tasks-Collection";
 
 function App() {
     const qList = query(collection(db, collectionName));

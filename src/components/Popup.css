@@ -21,8 +21,9 @@
     transform: translate(-50%, -50%);
 }
 
-.alert-buttons {
-    background-color: #373a47;
+.alert-close {
+    background-color: #6ba6dd;
+    color: white;
     position: absolute;
     display: flex;
     bottom: 0;
