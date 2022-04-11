@@ -25,7 +25,8 @@ export default function Sidebar(props) {
                     key={list.id}
                     list={list}
                     renameList={props.renameList}
-                    deleteList={props.deleteList}/>
+                    deleteList={props.deleteList}
+                    changeListId={props.changeListId}/>
             ))}
       </div>
       

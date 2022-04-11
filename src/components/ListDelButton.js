@@ -1,8 +1,11 @@
 // import './ListDelButton.css';
+import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from '@mui/material/IconButton';
 
 export default function ListDelButton(props) {
     return (
-        <button onClick={props.deleteList()}>
-        </button>
+        <IconButton onClick={(e) => {props.deleteList(props.list.id)}}>
+            <DeleteIcon/>
+        </IconButton>
     )
 }

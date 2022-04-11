@@ -7,7 +7,7 @@ function Popup(props) {
             <div className="alert-buttons">
                 <button className={"alert-button alert-cancel"} type={"button"}
                         onClick={props.onClose}>
-                    Cancel
+                    Close
                 </button>
             </div>
         </div>

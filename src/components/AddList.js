@@ -15,7 +15,7 @@ export default function AddList(props) {
     }
 
     return (
-        <form className='form' onSubmit={onSubmit}>
+        <form className='list-form' onSubmit={onSubmit}>
             <input type='text'
                    placeholder='list name...'
                    className='input'
@@ -23,7 +23,7 @@ export default function AddList(props) {
                    onChange={(e) => setText(e.target.value)}/>
             <input type='submit'
                    value='Add'
-                   className='addBtn'/>
+                   className='addListBtn'/>
         </form>
     )
 }

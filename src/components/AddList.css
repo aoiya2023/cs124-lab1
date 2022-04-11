@@ -1,0 +1,35 @@
+/* Style the "Add" button */
+.addListBtn {
+    background-color: #6ba6dd; /**/
+    color: white;
+    border: none;
+    text-align: center;
+    width: 25%;
+    padding: 0;
+    display: inline-block;
+    transition-duration: 0.5s;
+    font-size: 18px;
+    
+}
+.addListBtn:hover {
+    background-color: #5885AF; /**/
+}
+
+/* Style the input */
+.list-form {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+/* Style the input text box*/
+.input {
+    margin: 8px 0;
+    border: none;
+    border-radius: 0;
+    width: 75%;
+    padding: 20px;
+    box-sizing: border-box;
+    float: left;
+    font-size: 20px;
+}

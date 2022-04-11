@@ -12,16 +12,17 @@ const collectionName = "List-Collection";
 const subCollectionName = "Tasks-Collection";
 
 export default function TaskSupplier(props) {
+
     const [showComplete, setShowComplete] = useState(false);
     const [sortBy, setSortBy] = useState("created");
 
-    const qTask = query(collection(props.db, collectionName, props.thisListId, subCollectionName), orderBy(sortBy))
+    const qTask = query(collection(props.db, collectionName, props.currentListId, subCollectionName), orderBy(sortBy))
     const [tasks, loadingTasks, errorTasks] = useCollectionData(qTask);
 
     // Add task
     function addTask (taskName) {
         const uniqueId = generateUniqueID();
-        setDoc(doc(props.db, collectionName, props.thisListId, subCollectionName, uniqueId),
+        setDoc(doc(props.db, collectionName, props.currentListId, subCollectionName, uniqueId),
             {
                 id: uniqueId,
                 text: taskName,
@@ -33,7 +34,8 @@ export default function TaskSupplier(props) {
 
     // Delete task
     function deleteCompletedTasks () {
-        tasks.forEach(task => task.complete && deleteDoc(doc(props.db, collectionName, props.thisListId, subCollectionName, task.id)));
+
+        tasks.forEach(task => task.complete && deleteDoc(doc(props.db, collectionName, props.currentListId, subCollectionName, task.id)));
     }
 
     // Hide Task
@@ -43,12 +45,12 @@ export default function TaskSupplier(props) {
 
     // Rename Task
     function renameTask (id, value) {
-        updateDoc(doc(props.db, collectionName, props.thisListId, subCollectionName, id), {text: value});
+        updateDoc(doc(props.db, collectionName, props.currentListId, subCollectionName, id), {text: value});
     }
 
     // Complete Task
     function completedTask (id, value) {
-        setDoc(doc(props.db, collectionName, props.thisListId, subCollectionName, id), {complete: !value}, {merge: true});
+        setDoc(doc(props.db, collectionName, props.currentListId, subCollectionName, id), {complete: !value}, {merge: true});
     }
 
     // Prioritize Task
@@ -61,7 +63,7 @@ export default function TaskSupplier(props) {
         } else {
             priority = 1
         }
-        setDoc(doc(props.db, collectionName, props.thisListId, subCollectionName, id), {priorityLevel : priority}, {merge: true});
+        setDoc(doc(props.db, collectionName, props.currentListId, subCollectionName, id), {priorityLevel : priority}, {merge: true});
     }
 
     // Sort Task
@@ -83,8 +85,8 @@ export default function TaskSupplier(props) {
     // Error Screen
     if (errorTasks) {
         return (
-					<p>Error: {JSON.stringify(errorTasks)}</p>
-				)
+        <p>Error: {JSON.stringify(errorTasks)}</p>
+		)
     }
 
     let filteredList = tasks
@@ -92,10 +94,9 @@ export default function TaskSupplier(props) {
         filteredList = tasks.filter(task => !task.complete);
     }
 
-
     return (
         <div>
-            <AddTask addTask={addTask}/>
+            <AddTask addTask={addTask} currentListId={props.currentListId}/>
             <Tasks tasks={filteredList} className='lsItems'
                 completedTask={completedTask}
                 renameTask={renameTask}

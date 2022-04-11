@@ -6,7 +6,10 @@ export default function AddTask(props) {
 
     function onSubmit (e) {
         e.preventDefault()
-        if(!text) {
+        if(props.currentListId==='none') {
+            alert('Please add a list and select it.')
+            return
+        } else if(!text) {
             alert('Please add a task.')
             return
         }
