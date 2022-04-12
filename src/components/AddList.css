@@ -5,6 +5,7 @@
     border: none;
     text-align: center;
     width: 25%;
+    /* height: 30px;  */
     padding: 0;
     display: inline-block;
     transition-duration: 0.5s;
@@ -28,7 +29,7 @@
     border: none;
     border-radius: 0;
     width: 75%;
-    padding: 20px;
+    padding: 25px;
     box-sizing: border-box;
     float: left;
     font-size: 20px;

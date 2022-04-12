@@ -96,16 +96,27 @@ export default function TaskSupplier(props) {
 
     return (
         <div>
-            <AddTask addTask={addTask} currentListId={props.currentListId}/>
-            <Tasks tasks={filteredList} className='lsItems'
-                completedTask={completedTask}
-                renameTask={renameTask}
-                changePriority={changePriority}/>
-            <Footer showComplete={showComplete} 
-            sortBy={sortBy} 
-            hideTask={hideTask} 
-            deleteCompletedTasks={deleteCompletedTasks}
-            sortedTask={sortedTask}/>
+            {
+                props.currentListId === 'none' ? 
+                (<div className='beginning'>
+                    <p> Please select a list to start adding tasks! </p>
+                </div>)
+                : 
+                (<div>
+                <AddTask addTask={addTask} currentListId={props.currentListId}/>
+                <Tasks tasks={filteredList} className='lsItems'
+                    completedTask={completedTask}
+                    renameTask={renameTask}
+                    changePriority={changePriority}
+                    currentListId={props.currentListId}/>
+                <Footer showComplete={showComplete} 
+                sortBy={sortBy} 
+                hideTask={hideTask} 
+                deleteCompletedTasks={deleteCompletedTasks}
+                sortedTask={sortedTask}
+                currentListId={props.currentListId}/>
+                </div>)
+            }
         </div>
     );
 

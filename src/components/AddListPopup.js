@@ -1,6 +1,6 @@
-import './Popup.css';
+import './AddListPopup.css';
 
-function Popup(props) {
+function AddListPopup(props) {
     return <div className={"backdrop"}>
         <div className="modal">
             {props.children}
@@ -12,4 +12,4 @@ function Popup(props) {
     </div>
 }
 
-export default Popup;
+export default AddListPopup;

@@ -1,7 +1,45 @@
-.menu-item{
-
+.radio-button input {
+    padding: 0%;
+    height: 20px;
+    width: 20px;
+    background-color: #b8b7ad;
+    border-radius: 50%; 
 }
-#radio-button{
-    display: inline-block;
-    padding-top: 0.3in;
+
+
+/* When the radio button is checked, add a blue background */
+.radio-button input:checked {
+    background-color: #2196F3;
+}
+  
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radio-button:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+  
+/* Show the indicator (dot/circle) when checked */
+.radio-button input:checked ~ .radio-button:after {
+    display: block;
+}
+  
+/* Style the indicator (dot/circle) */
+.radio-button .radio-button:after {
+    top: 6px;
+    left: 6px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: white;
+}
+
+.individual-list {
+    position: relative;
+    bottom: 10px;
+}
+
+.trash-can {
+    position: relative;
+    bottom: 11px;
 }

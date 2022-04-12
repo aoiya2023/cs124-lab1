@@ -17,6 +17,7 @@ export default function AddTask(props) {
         setText('')
     }
 
+
     return (
         <form className='form' onSubmit={onSubmit}>
             <input type='text'

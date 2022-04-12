@@ -7,7 +7,7 @@ import TaskSupplier from './components/TaskSupplier';
 import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 import {useCollectionData} from "react-firebase-hooks/firestore";
 import { initializeApp } from "firebase/app";
-import { collection, deleteDoc, doc, getFirestore, query, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
+import { collection, doc, getFirestore, query, serverTimestamp, setDoc, updateDoc } from "firebase/firestore";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAJOGQftqdeOAdZZK5rf9tDX6kNIqSHK7Y",
@@ -27,7 +27,11 @@ const collectionName = "List-Collection";
 function App() {
     const qList = query(collection(db, collectionName));
     const [lists, loading, error] = useCollectionData(qList);
-    const [currentListId, setCurrentListId] = useState((lists && lists.length!==0) ? lists[0].id : 'none')
+    const [currentListId, setCurrentListId] = useState('none')
+
+    // does the currentListId exist in lists?
+    // If not, set it to 'none'
+    // Question: How to set it to 'none' without using setCurrentListId (gets into infinite loop)
 
     function addList(listName) {
         const uniqueId = generateUniqueID();
@@ -37,6 +41,7 @@ function App() {
                 text: listName,
                 created: serverTimestamp(),
             });
+        setCurrentListId(uniqueId);
         
     }
     
@@ -48,27 +53,6 @@ function App() {
     // Rename List
     function renameList(id, value) {
        updateDoc(doc(db, collectionName, id), {text: value});
-    }
-
-	// Delete List 
-    function deleteList(id) {
-        
-        // TODO: delete Tasks
-        //let collectionRef = collection(db, collectionName, id, subCollectionName)
-        // let tasks = getDoc(db, collectionName, id)
-        // tasks.forEach(task => console.log(task.id))
-        //deleteDoc(doc(db, collectionName, id, subCollectionName, task.id))
-        // if(lists.list.id === id)
-        // {
-        let whatever = lists.filter(list => list.id === list)
-        console.log(whatever[0].id)
-        // }
-        
-        deleteDoc(doc(db,collectionName,id))
-        if (lists.length===0) {
-            setCurrentListId('none');
-        }
-        
     }
 
     // Loading Screen
@@ -83,6 +67,11 @@ function App() {
 		)
     }
     
+    if (lists && lists.length !== 0) {
+        console.log(currentListId);
+        // setCurrentListId("none");
+    }
+
     return (
     <div id='container'>
       <Header title='TO DO LIST'/>
@@ -90,8 +79,8 @@ function App() {
             lists={lists}
             addList={addList}
             renameList={renameList}
-            deleteList={deleteList}
-            changeListId={changeListId} 
+            changeListId={changeListId}
+            db={db} 
         />
         <TaskSupplier db={db} currentListId={currentListId}/>
               
