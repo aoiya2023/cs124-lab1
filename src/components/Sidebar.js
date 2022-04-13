@@ -38,6 +38,7 @@ export default function Sidebar(props) {
                       list={list}
                       renameList={props.renameList}
                       db={props.db}
+                      changeListId={props.changeListId}
                       currentListId={props.currentListId}/>
               ))}
           </ul>

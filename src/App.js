@@ -83,6 +83,7 @@ function App() {
             lists={lists}
             addList={addList}
             renameList={renameList}
+            changeListId={changeListId}
             currentListId={currentListId}
             db={db} 
         />
