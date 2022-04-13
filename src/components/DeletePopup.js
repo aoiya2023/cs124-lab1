@@ -35,11 +35,13 @@ export default function DeletePopup(props) {
         <div className="delete-modal">
             <p>Are you sure want to delete this list?</p>
             <button className={"alert-cancel"} type={"button"}
-                    onClick={props.onClose}>
+                    onClick={props.onClose}
+                    aria-label={"cancel delete " + props.list.text}>
                 Cancel
             </button>
             <button className={"alert-confirm"} type={"button"}
-                    onClick={deleteList}>
+                    onClick={deleteList}
+                    aria-label={"confirm delete" + props.list.text}>
                 Yes
             </button>
         </div>

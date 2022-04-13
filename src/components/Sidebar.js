@@ -15,14 +15,21 @@ export default function Sidebar(props) {
   function toggleModal() {
     setShowAddListPopup(!showAddListPopup);
   }
+
+  // classList.replace('bm-cross-button', 'bm-no-button')
+  // document.getElementsByClassName("bm-cross-button").className.replace('bm-cross-button', 'bm-no-button')
+  //.replace("bm-cross-button", "bm-no-button")
   
   return (
-    <Menu>
-
+    <Menu aria-hidden="true">
+      {/* {
+        showPopup ? (document.getElementsByClassName("bm-cross-button")[0].className = 'bm-cross-button')
+         : console.log()
+      } */}
       <div className='List'>
         <div className='add-list'>
           <h2 className='add-list-text'>LISTS</h2>
-          <IconButton className='add-list-button' onClick={toggleModal}><AddTaskIcon style={{ fill: '#0072ea' }}/></IconButton>
+          <IconButton className='add-list-button' aria-label="open add list pop up" onClick={toggleModal}><AddTaskIcon style={{ fill: '#0072ea' }}/></IconButton>
         </div>
         <ul className='listItems'>
           {props.lists?.map((list) => (
@@ -39,7 +46,7 @@ export default function Sidebar(props) {
       
       {showAddListPopup && <AddListPopup onClose={toggleModal} onAdd={props.addList}>
         <div>
-          <AddList addList={props.addList}/>
+          <AddList aria-hidden="true" addList={props.addList}/>
         </div>
       </AddListPopup>}
       

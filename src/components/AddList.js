@@ -19,10 +19,12 @@ export default function AddList(props) {
             <input type='text'
                    placeholder='list name...'
                    className='input'
+                   aria-label={(text? text : "Add list name")}
                    value={text}
                    onChange={(e) => setText(e.target.value)}/>
             <input type='submit'
                    value='Add'
+                   aria-label="add new list"
                    className='addListBtn'/>
         </form>
     )

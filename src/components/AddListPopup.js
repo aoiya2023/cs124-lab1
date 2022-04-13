@@ -5,6 +5,7 @@ function AddListPopup(props) {
         <div className="modal">
             {props.children}
             <button className={"alert-close"} type={"button"}
+                aria-label="Close add list pop up"
                     onClick={props.onClose}>
                 Close
             </button>

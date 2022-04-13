@@ -24,9 +24,11 @@ export default function AddTask(props) {
                    placeholder='todo...'
                    className='input'
                    value={text}
+                   aria-label={(text? text : "Add task name")}
                    onChange={(e) => setText(e.target.value)}/>
             <input type='submit'
                    value='Add'
+                   aria-label="add new task"
                    className='addBtn'/>
         </form>
     )
