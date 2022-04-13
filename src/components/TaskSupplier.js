@@ -99,7 +99,7 @@ export default function TaskSupplier(props) {
             {
                 props.currentListId === 'none' ? 
                 (<div className='beginning'>
-                    <p> Please select a list to start adding tasks! </p>
+                    <p> Please add or select a list to start adding tasks! </p>
                 </div>)
                 : 
                 (<div>

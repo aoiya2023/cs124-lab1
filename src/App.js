@@ -29,20 +29,25 @@ function App() {
     const [lists, loading, error] = useCollectionData(qList);
     const [currentListId, setCurrentListId] = useState('none')
 
-    // does the currentListId exist in lists?
-    // If not, set it to 'none'
-    // Question: How to set it to 'none' without using setCurrentListId (gets into infinite loop)
+    const currentListIdExist = lists?.filter(list=> list.id === currentListId)
+    if (currentListId !== 'none' && currentListIdExist.length === 0) {
+        if (lists.length===0) {
+            setCurrentListId('none');
+        } else {
+            setCurrentListId(lists[0].id);
+        }
+    }
+
 
     function addList(listName) {
         const uniqueId = generateUniqueID();
+        // when finish adding the document, then set the currentListId to uniqueId
         setDoc(doc(db, collectionName, uniqueId),
             {
                 id: uniqueId,
                 text: listName,
                 created: serverTimestamp(),
-            });
-        setCurrentListId(uniqueId);
-        
+            }).then(() => setCurrentListId(uniqueId));
     }
     
     // Change current list Id
@@ -66,11 +71,10 @@ function App() {
 			<p>Error: {JSON.stringify(error)}</p>
 		)
     }
-    
-    if (lists && lists.length !== 0) {
-        console.log(currentListId);
-        // setCurrentListId("none");
-    }
+
+    // if(lists) {
+    //     console.log("currenet list id: ", currentListId)
+    // }
 
     return (
     <div id='container'>
@@ -79,7 +83,7 @@ function App() {
             lists={lists}
             addList={addList}
             renameList={renameList}
-            changeListId={changeListId}
+            currentListId={currentListId}
             db={db} 
         />
         <TaskSupplier db={db} currentListId={currentListId}/>

@@ -16,9 +16,10 @@ export default function SidebarItem (props) {
 			
 			<li className="menu-item">
 				<label className='radio-button'>
-					<input type="radio" name="sidebar-item"
+					<input type="radio" name="sidebar-item" 
+						checked = {props.list.id === props.currentListId? true : false}
 						aria-label={(props.list.text? props.list.text : "list")  + " selected"}
-						onClick={(e) => props.changeListId(props.list.id)}/>
+						onChange={(e) => props.changeListId(props.list.id)}/>
 					<span className='checkmark'></span>
 				</label>
 				<input type='text'
@@ -31,7 +32,7 @@ export default function SidebarItem (props) {
 			</li>
 			<p> </p>
 			
-			{showDeletePopup && <DeletePopup className='delete-popup' onClose={toggleModal} list={props.list} lists={props.lists} db={props.db} changeListId={props.changeListId}>
+			{showDeletePopup && <DeletePopup className='delete-popup' onClose={toggleModal} list={props.list} db={props.db}>
       			</DeletePopup>}
 			
 		</div>

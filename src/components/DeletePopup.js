@@ -13,13 +13,6 @@ export default function DeletePopup(props) {
         tasks.forEach(task => deleteDoc(doc(props.db, collectionName, props.list.id, subCollectionName, task.id)));
         deleteDoc(doc(props.db, collectionName, props.list.id))
 
-        // Does not work because currentListId does not get re-rendered in time
-        // if (props.lists.length===0) {
-        //     props.changeListId('none');
-        // } else {
-        //     props.changeListId(props.lists[0].id);
-        // }
-
     }
 
     if (loadingtasks) {
