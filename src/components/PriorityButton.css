@@ -3,8 +3,8 @@
     width: 25%;
     color: white;
     font-size: 15px;
-
-
+    height: fit-content;
+    padding: 25px 2px;
 }
 .priBtn.High {
     background-color: #1751b5d0;
@@ -20,4 +20,9 @@
 
 .priBtn:hover {
     background-color: #86BBBD;
+}
+
+.priBtn:focus {
+    outline: 4px solid red;
+    z-index: 10;
 }

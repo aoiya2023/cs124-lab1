@@ -18,7 +18,7 @@ export default function AddList(props) {
         <form className='list-form' onSubmit={onSubmit}>
             <input type='text'
                    placeholder='list name...'
-                   className='input'
+                   className='list-input'
                    aria-label={(text? text : "Add list name")}
                    value={text}
                    onChange={(e) => setText(e.target.value)}/>

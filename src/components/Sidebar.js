@@ -32,7 +32,7 @@ export default function Sidebar(props) {
           <IconButton className='add-list-button' aria-label="open add list pop up" onClick={toggleModal}><AddTaskIcon style={{ fill: '#0072ea' }}/></IconButton>
         </div>
 
-        <ul className={`${(props.lists.length >= 5) ? 'listItems-exist' : 'listItems'} ` } >
+        <ul className={`${(props.lists.length >= 1) ? 'listItems-exist' : 'listItems'} ` } >
           {props.lists?.map((list) => (
                   <SidebarItem
                       key={list.id}

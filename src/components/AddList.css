@@ -7,9 +7,8 @@
     width: 25%;
     /* height: 30px;  */
     padding: 0;
-    display: inline-block;
     transition-duration: 0.5s;
-    font-size: 18px;
+    font-size: 25px;
     
 }
 .addListBtn:hover {
@@ -18,18 +17,21 @@
 
 /* Style the input */
 .list-form {
+    position: fixed;
+    top: 45px;
+    left: 12px;
     display: flex;
     flex-direction: row;
     
 }
 
 /* Style the input text box*/
-.input {
-    margin: 8px 0;
+.list-input {
+    margin: 0 0;
     border: none;
     border-radius: 0;
     width: 75%;
-    padding: 25px;
+    padding: 30px;
     box-sizing: border-box;
     float: left;
     font-size: 20px;

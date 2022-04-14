@@ -15,14 +15,14 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    height: 100pt;
-    width: 200pt;
+    height: 150pt;
+    width: 260pt;
     padding: 10pt;
     transform: translate(-50%, -50%);
 }
 
 .alert-close {
-    background-color: #6ba6dd;
+    background-color: #41729F;
     color: white;
     font-size: 18pt;
     position: absolute;

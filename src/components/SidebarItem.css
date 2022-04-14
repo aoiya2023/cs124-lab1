@@ -1,7 +1,9 @@
+
 .radio-button input {
     padding: 0%;
     height: 20px;
     width: 20px;
+    margin-left: 0;
     background-color: #b8b7ad;
     border-radius: 50%; 
 }
@@ -37,6 +39,7 @@
 .individual-list {
     position: relative;
     bottom: 10px;
+    font-size: medium;
 }
 
 .trash-can {
