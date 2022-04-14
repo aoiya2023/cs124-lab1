@@ -31,6 +31,7 @@
 .alert-cancel {
     background-color: #6ba6dd;
     color: white;
+    font-size: 18pt;
     position: absolute;
     display: flex;
     bottom: 10px;
@@ -40,6 +41,7 @@
 .alert-confirm {
     background-color: #6ba6dd;
     color: white;
+    font-size: 18pt;
     position: absolute;
     display: flex;
     bottom: 10px;

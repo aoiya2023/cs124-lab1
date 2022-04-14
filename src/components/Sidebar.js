@@ -31,7 +31,8 @@ export default function Sidebar(props) {
           <h2 className='add-list-text'>LISTS</h2>
           <IconButton className='add-list-button' aria-label="open add list pop up" onClick={toggleModal}><AddTaskIcon style={{ fill: '#0072ea' }}/></IconButton>
         </div>
-        <ul className='listItems'>
+
+        <ul className={`${(props.lists.length >= 5) ? 'listItems-exist' : 'listItems'} ` } >
           {props.lists?.map((list) => (
                   <SidebarItem
                       key={list.id}
@@ -41,7 +42,7 @@ export default function Sidebar(props) {
                       changeListId={props.changeListId}
                       currentListId={props.currentListId}/>
               ))}
-          </ul>
+        </ul>
       </div>
       
       {showAddListPopup && <AddListPopup onClose={toggleModal} onAdd={props.addList}>

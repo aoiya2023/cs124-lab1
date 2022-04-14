@@ -64,11 +64,18 @@ Note: Beware of modifying this element as it can break the animations - you shou
     width: 30%;
 }
 
-.listItems {
+.listItems-exist {
     position: fixed;
-    left: 0;
+    margin-left: 0;
     top: 35%;
     overflow-y: scroll;
     height: 400px;
+
+}
+
+.listItems {
+    position: fixed;
+    margin-left: 0;
+    top: 35%;
 
 }
