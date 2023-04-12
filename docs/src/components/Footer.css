@@ -1,0 +1,8 @@
+/*Style the footer (HideButton and DelButton)*/
+.footer {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 0px;
+    overflow: hidden;
+}
